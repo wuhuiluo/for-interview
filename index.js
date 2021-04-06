@@ -1111,7 +1111,41 @@
 
 // console.log(myInstanceof("111", String)); //false
 // console.log(myInstanceof(new String("111"), String));//true
-let arr = [1, 2]
-console.log(Object.prototype.toString.call(arr) === '[object Array]') // true
-console.log(arr instanceof Array) // true
-console.log(arr instanceof Object) // true
+// let arr = [1, 2]
+// console.log(Object.prototype.toString.call(arr) === '[object Array]') // true
+// console.log(arr instanceof Array) // true
+// console.log(arr instanceof Object) // true
+
+// 实现一个promise
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('FULFILLED')
+//     }, 1000)
+// })
+
+// pending 进行中
+// fulfilled 已成功
+// rejected 已失效
+
+
+// 冒泡排序
+
+let arr = [66, 23, 4, 55, 661, 65]
+
+function bubble(arr) {
+    // 外层循环控制循环的轮数
+    let temp;
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+            }
+        }
+    }
+    return arr
+    // 内层循环控制比较的次数
+}
+
+console.log(bubble(arr));
