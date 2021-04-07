@@ -1130,22 +1130,156 @@
 
 // 冒泡排序
 
-let arr = [66, 23, 4, 55, 661, 65]
+// let arr = [66, 23, 4, 55, 661, 65]
 
-function bubble(arr) {
-    // 外层循环控制循环的轮数
-    let temp;
-    for (let i = 0; i < arr.length - 1; i++) {
-        for (let j = 0; j < arr.length - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temp
-            }
-        }
-    }
-    return arr
-    // 内层循环控制比较的次数
-}
+// function bubble(arr) {
+//     // 外层循环控制循环的轮数
+//     let temp;
+//     for (let i = 0; i < arr.length - 1; i++) {
+//         for (let j = 0; j < arr.length - 1 - i; j++) {
+//             if (arr[j] > arr[j + 1]) {
+//                 temp = arr[j]
+//                 arr[j] = arr[j + 1]
+//                 arr[j + 1] = temp
+//             }
+//         }
+//     }
+//     return arr
+//     // 内层循环控制比较的次数
+// }
 
-console.log(bubble(arr));
+// console.log(bubble(arr));
+
+
+// const insertSort = function (arr) {
+//     const len = arr.length
+//     let curr, prev
+//     for (let i = 1; i < len; i++) {
+//         curr = arr[i] // cur = arr[2]
+//         prev = i - 1 // prev = 1
+//         arr[1] > arr[2]
+//         arr[2] = arr[1]
+//         while (prev >= 0 && arr[prev] > curr) {
+//             arr[prev + 1] = arr[prev]
+//             prev--
+//         }
+//         arr[prev + 1] = curr
+//     }
+//     return arr
+// }
+
+
+// 选择排序
+
+// let arr = [1, 23, 5, 267, 77, 54, 14]
+
+// function selectSort(arr) {
+//     let temp;
+//     let minIndex
+//     for (let i = 0; i < arr.length - 1; i++) {
+//         minIndex = i
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[j] < arr[minIndex]) {
+//                 minIndex = j
+//             }
+//         }
+//         temp = arr[i]
+//         arr[i] = arr[minIndex]
+//         arr[minIndex] = temp
+//     }
+//     return arr
+// }
+
+// console.log(selectSort(arr));
+// const arr = [4,6,3,5,2]
+// const insertSort = function (arr) {
+//     const len = arr.length
+//     let curr, prev
+//     for (let i = 1; i < len; i++) {
+//         curr = arr[i] //  3
+//         prev = i - 1 // 1    // 4 > 6
+//         while (prev >= 0 && arr[prev] > curr) {
+//             arr[prev + 1] = arr[prev]
+//             prev--
+//         }
+//         console.log(prev);
+//         arr[prev + 1] = curr
+//     }
+//     return arr
+// }
+
+// console.log(insertSort(arr));
+// function partition(arr, p, q) {
+//     var i = p;
+//     var x = arr[p];
+//     var j;
+//     for (j = p + 1; j <= q; j++) {
+//         if (arr[j] <= x) {
+//             ++i;
+//             swap(arr, i, j);
+//         }
+//     }
+//     swap(arr, i, p);
+//     return i; //返回划分中间位置
+// }
+
+// function quickSort(arr, p, q) {
+//     if (p < q) {
+//         var k = partition(arr, p, q); //确定划分中间位置
+//         quickSort(arr, p, k - 1); //对左边部分进行递归
+//         quickSort(arr, k + 1, q); //对右边部分进行递归
+//     }
+// }
+// //交换函数
+// function swap(arr, i, j) {
+//     var tmp = arr[i];
+//     arr[i] = arr[j];
+//     arr[j] = tmp;
+// }
+// var arr = [1, 12, 6, 3, 5];
+// quickSort(arr, 0, arr.length - 1);
+// console.log(arr);
+
+// function sum(n) {
+//     if(n > 10) {
+//         return 0
+//     }
+//     return n + sum(n + 1)
+// }
+
+// let total = sum(1)
+// console.log(total);
+
+// function quick(ary) {
+//     if (ary.length <= 1) return ary
+//     let middleIndex = Math.floor(ary.length / 2)
+//     let middleValue = ary.splice(middleIndex, 1)[0]
+//     let aryLeft = []
+//     let aryRight = []
+//     for (let i = 0; i < ary.length; i++) {
+//         let item = ary[i]
+//         item < middleValue ? aryLeft.push(item) : aryRight.push(item)
+//     }
+//     return quick(aryLeft).concat(middleValue, quick(aryRight))
+// }
+
+// var arr = [1, 12, 6, 3, 5];
+
+// console.log(quick(arr));
+// var arr = [1, 12, 6, 3, 5];
+// const bubbleSort = function (arr) {
+//     const len = arr.length
+//     if (len < 2) return arr
+//     for (let i = 0; i < len - 1; i++) {
+//         for (let j = 0; j < len - i - 1; j++) {
+//             if (arr[j] > arr[j + 1]) {
+//                 const temp = arr[j]
+//                 arr[j] = arr[j + 1]
+//                 arr[j + 1] = temp
+//             }
+//         }
+//     }
+//     return arr
+// }
+
+// console.log(bubbleSort(arr));
