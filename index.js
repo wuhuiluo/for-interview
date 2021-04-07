@@ -1283,3 +1283,69 @@
 // }
 
 // console.log(bubbleSort(arr));
+// function BubbleSort(arr) {
+//     let temp
+//     for(let i = 0 ; i < arr.length - 1 ; i++) {
+//         for(let j = 0 ; j < arr.length - 1 - i; j++) {
+//             if(arr[j] > arr[j+1]) {
+//                 temp = arr[j]
+//                 arr[j] = arr[j+1]
+//                 arr[j+1] = temp
+//             }
+//         }
+//     }
+//     return arr
+// }
+
+// console.log(BubbleSort(arr));
+// var arr = [1, 12, 6, 3, 5];
+// function selectSort(arr) {
+//     let minIndex, temp
+//     for (let i = 0; i < arr.length - 1; i++) {
+//         minIndex = i 
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[j] < arr[minIndex]) {
+//                 minIndex = j
+//             }
+//         }
+//         temp = arr[i]
+//         arr[i] = arr[minIndex]
+//         arr[minIndex] = temp
+//     }
+//     return arr
+// }
+
+
+// console.log(selectSort(arr));
+// var arr = [1, 12, 6, 3, 5];
+// function insertSort(arr) {
+//     let cur, prev
+//     for (let i = 1; i < arr.length; i++) {
+//         cur = arr[i]
+//         prev = i - 1
+//         while (prev >= 0 && arr[prev] > cur) {
+//             arr[prev + 1] = arr[prev]
+//             prev--
+//         }
+//         arr[prev + 1] = cur
+//     }
+//     return arr
+// }
+
+// console.log(insertSort(arr));
+// var arr = [1, 12, 6, 3, 5];
+
+// function quickSort(arr) {
+//     if (arr.length <= 1) return arr
+//     let middleIndex = Math.floor(arr.length / 2)
+//     let middleValue = arr.splice(middleIndex, 1)[0]
+//     let arrayLeft = [],
+//         arrayRight = []
+//     for (let i = 0; i < arr.length; i++) {
+//         let item = arr[i]
+//         item < middleValue ? arrayLeft.push(item) : arrayRight.push(item)
+//     }
+//     return quickSort(arrayLeft).concat(middleValue, quickSort(arrayRight))
+// }
+
+// console.log(quickSort(arr));
