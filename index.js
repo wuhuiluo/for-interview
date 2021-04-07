@@ -1349,3 +1349,5 @@
 // }
 
 // console.log(quickSort(arr));
+
+// 实现一个promise
