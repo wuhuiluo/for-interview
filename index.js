@@ -1351,3 +1351,88 @@
 // console.log(quickSort(arr));
 
 // 实现一个promise
+
+// new Promise((resolve, reject) => {
+//     resolve('success')
+//     reject('err')
+// })
+
+// Promise.then(value => {
+//     console.log('resolve', value);
+// }, reason => {
+//     console.log('reject', reason);
+// })
+
+
+// 新建 MyPromise.js
+
+// 先定义三个常量表示状态
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+// 新建 MyPromise类
+
+class MyPromise {
+    constructor(executor) {
+        // executor是一个执行器，进入会立即执行
+        // 传入resolve和reject方法
+        executor(this.resolve, this.reject)
+    }
+
+    // 存储状态的变量，初始值是PENDING
+    status = PENDING
+
+    // resolve和reject为什么要用箭头函数？
+    // 如果直接调用的话，普通函数的this指向的是window或者undefined(严格模式下)
+    // 用箭头函数可以让this指向当前的实例对象
+
+    // 成功后的值
+    value = null
+    // 失败之后的原因
+    reason = null
+
+    // 更改成功后的状态
+    resolve = (value) => {
+        // 只有状态是等待，才执行状态修改
+        if (this.status === PENDING) {
+            // 状态修改为成功
+            this.status = FULFILLED
+            // 保存成功后的值
+            this.value = value
+        }
+    }
+
+    // 更改失败后的状态
+    reject = (reason) => {
+        // 只有状态是等待，才执行状态修改
+        if (this.status === PENDING) {
+            // 状态修改为失败
+            this.status = REJECTED
+            // 保存失败后的原因
+            this.reason = reason
+        }
+    }
+
+    then(onFulfilled, onRejected) {
+        // 判断状态
+        if (this.status === FULFILLED) {
+            // 调用成功回调，并把值返回
+            onFulfilled(this.value)
+        } else if (this.status === REJECTED) {
+            // 调用失败回调，并且把原因返回
+            onRejected(this.reason)
+        }
+
+    }
+}
+
+const promise = new MyPromise((resolve, reject) => {
+    resolve('success')
+    reject('err')
+})
+
+promise.then(value => {
+    console.log('resolve', value);
+}, reason => {
+    console.log('reason', reason);
+})
