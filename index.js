@@ -1379,6 +1379,11 @@ class MyPromise {
         executor(this.resolve, this.reject)
     }
 
+    // 存储成功的回调函数
+    onFulfilledCallback = null
+    // 存储失败的回调函数
+    onRejectedCallback = null
+
     // 存储状态的变量，初始值是PENDING
     status = PENDING
 
@@ -1399,6 +1404,9 @@ class MyPromise {
             this.status = FULFILLED
             // 保存成功后的值
             this.value = value
+            // ===== 新增 =====
+            // 判断成功回调是否存在，如果存在则调用
+            this.onFulfilledCallback && this.onFulfilledCallback(value)
         }
     }
 
@@ -1410,6 +1418,9 @@ class MyPromise {
             this.status = REJECTED
             // 保存失败后的原因
             this.reason = reason
+            // ===== 新增 =====
+            // 判断失败回调是否存在，如果存在就调用
+            this.onRejectedCallback && this.onRejectedCallback(reason)
         }
     }
 
@@ -1421,18 +1432,23 @@ class MyPromise {
         } else if (this.status === REJECTED) {
             // 调用失败回调，并且把原因返回
             onRejected(this.reason)
+        } else if (this.status === PENDING) {
+            // ====== 新增 ======
+            // 因为不知道后面状态的变化情况，所以将成功回调和失败回调存储起来
+            this.onFulfilledCallback = onFulfilled
+            this.onRejectedCallback = onRejected
         }
-
     }
 }
 
 const promise = new MyPromise((resolve, reject) => {
-    resolve('success')
-    reject('err')
+    setTimeout(() => {
+        resolve('success')
+    }, 2000)
 })
 
 promise.then(value => {
     console.log('resolve', value);
 }, reason => {
-    console.log('reason', reason);
+    console.log('reject', reason);
 })
